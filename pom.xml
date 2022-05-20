@@ -23,6 +23,48 @@
       <artifactId>tsfile</artifactId>
       <version>0.13.0</version>
     </dependency>
+    <dependency>
+      <groupId>de.fraunhofer.iosb.io.moquette</groupId>
+      <artifactId>moquette-broker</artifactId>
+      <version>0.14.3</version>
+    </dependency>
+
+
+    <!-- mqtt client-->
+    <dependency>
+      <groupId>org.eclipse.paho</groupId>
+      <artifactId>org.eclipse.paho.client.mqttv3</artifactId>
+      <version>1.2.2</version>
+    </dependency>
   </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+            <configuration>
+              <archive>
+                <manifest>
+                  <mainClass>
+                    timecho.mqtt.server.MQTTService
+                  </mainClass>
+                </manifest>
+              </archive>
+              <descriptorRefs>
+                <descriptorRef>jar-with-dependencies</descriptorRef>
+              </descriptorRefs>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 
 </project>
